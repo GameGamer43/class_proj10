@@ -3,21 +3,21 @@
 
 class EventList:
     
-    def __init__(self, eList = ''):
+    def __init__(self):
         '''
         constructor
         '''
         #list of events
-        self.__eList = []
-        pass
+        self.eList = []
 
-    def insert(self):
+    def insert(self, event = ''):
         '''
         insert an event into the EventList
         '''
+        print(self)
         pass
 
-    def pop(self):
+    def pop(self, position = 0):
         '''
         method to pop an Event from the EventList and return the event.
         '''
@@ -28,4 +28,7 @@ class EventList:
         '''
         return true if EventList is empty
         '''
-        pass
+        if self.eList:
+            return True
+        else:
+            return False
