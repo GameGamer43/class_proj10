@@ -35,7 +35,10 @@ def main():
     if debug == True:
         print(ev.eventList)
     # then sort the list
+    
     # while event list is not empty    
+    while ev.eventList:
+        exit()
         # pop the next event off the event list
         # wallClockTime = the time of the event
         # if event type == ‘A’: # person arrives at the line
