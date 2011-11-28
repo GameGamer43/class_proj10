@@ -7,6 +7,9 @@ from eventList import EventList
 #global debug var to help us seperate debug output
 debug = True
 
+ev = EventList()
+e = Event
+
 def readFile(filename):
     contents = ''
     fileList = []
@@ -15,7 +18,8 @@ def readFile(filename):
             contents = openFile.readline()
             while contents != '':
                 contents.replace("\n"," ")
-                fileList.append(contents.strip())
+                contents = contents.strip()
+                ev.insert(contents.split(" "))
                 contents = openFile.readline()
         return fileList
     except:
@@ -23,14 +27,15 @@ def readFile(filename):
         exit()
 
 def main():
-    fileContents = readFile('arrivals.txt')
     
-    if debug == True:
-        print(fileContents)
-
+    # read in our file
+    readFile('arrivals.txt')
+    
     # put the events into the event list
+    if debug == True:
+        print(ev.eventList)
     # then sort the list
-    # while the event list is not empty:
+    # while event list is not empty    
         # pop the next event off the event list
         # wallClockTime = the time of the event
         # if event type == ‘A’: # person arrives at the line

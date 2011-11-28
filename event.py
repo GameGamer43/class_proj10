@@ -6,10 +6,10 @@ class Event:
         '''
         constructor
         '''
-        self.__eventTime = []
-        self.__serviceTime = []
-        self.__eventType = []
-        self.__ATMnumber = [1,2,3,4]
+        self.eventTime = []
+        self.serviceTime = []
+        self.eventType = []
+        self.ATMnumber = [1,2,3,4]
         pass
 
     def __cmp__(self,other):
