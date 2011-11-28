@@ -29,12 +29,17 @@ def readFile(filename):
 def main():
     
     # read in our file
-    readFile('arrivals.txt')
+    readFile('arrivals2.txt')
     
     # put the events into the event list
     if debug == True:
         print(ev.eventList)
+    
     # then sort the list
+    ev.eventList.sort(key=lambda x: float(x[0]))
+    
+    if debug == True:
+        print(ev.eventList)
     
     # while event list is not empty    
     while ev.eventList:
