@@ -36,7 +36,7 @@ def main():
         print(ev.eventList)
     
     # then sort the list
-    ev.eventList.sort(key=lambda x: float(x[0]))
+    ev.eventList.sort(key=lambda x: int(x[0]))
     
     if debug == True:
         print(ev.eventList)
