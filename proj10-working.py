@@ -66,7 +66,6 @@ def main():
                 ev.insert(currentEvent)
         # else: # event is type == ‘D’ someone is leaving an ATM machine
         elif currentEvent[2] == 'D':
-            pass
             #if the line is empty:
             if not waitingList:
                 pass
