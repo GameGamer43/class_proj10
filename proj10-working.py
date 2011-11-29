@@ -36,15 +36,19 @@ def main():
         print(ev.eventList)
     
     # then sort the list
-    ev.eventList.sort(key=lambda x: int(x[0]))
+    ev.eventList.sort(key=lambda x: int(x[0]), reverse=True)
     
     if debug == True:
         print(ev.eventList)
     
     # while event list is not empty    
     while ev.eventList:
-        exit()
         # pop the next event off the event list
+        currentEvent = ev.eventList.pop()
+        
+        if debug == True:
+            print(currentEvent)
+        
         # wallClockTime = the time of the event
         # if event type == ‘A’: # person arrives at the line
             # if the line is empty and an ATM is available:
