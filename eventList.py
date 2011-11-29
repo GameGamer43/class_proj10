@@ -40,6 +40,13 @@ class EventList:
         else:
             return False
 
+    def sort(self, debug = False):
+        # then sort the list
+        self.eventList.sort(key=lambda x: int(x[0]), reverse=True)
+
+        if debug == True:
+            print(ev.eventList)
+
     def __str__(self):
         """Represent the whole list as a string for printing -- very useful
            during code development

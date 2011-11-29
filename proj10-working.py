@@ -32,14 +32,11 @@ def main():
     # read in our file
     readFile('arrivals2.txt')
 
-    # then sort the list
-    ev.eventList.sort(key=lambda x: int(x[0]), reverse=True)
-
-    if debug == True:
-        print(ev.eventList)
-
+    ev.sort()
+    
     waitingList = []
     atmList = [1,2,3,4]
+    
     # while event list is not empty
     while ev.eventList:
         # pop the next event off the event list
@@ -82,6 +79,7 @@ def main():
                 # send the person to the available ATM machine which means: create a new ‘D’ event with an
                 # event time calculated from the wallClockTime plus the person’s service time
                 # add this new ‘D’ event to the event listi
+        ev.sort()
         # print the event, the line and ATM’s in use
 
 def output():
