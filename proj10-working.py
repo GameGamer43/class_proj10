@@ -55,14 +55,14 @@ def main():
         #person arrives at the line
         if currentEvent[2] == 'A':
             print('Here')
+            # if the line is empty and an ATM is available:
             if not waitingList:
                 print('2')
-            # if the line is empty and an ATM is available:
                 # send the person to an available ATM machine which means: create a new ‘D’event with an event time calculated from the wallClockTime plus the person’s service time
                 # add this new ‘D’ event to the event list
+            # else: # put the person in line because there is nowhere else
             else:
                 print('3')
-            # else: # put the person in line because there is nowhere else to go
                 # add the person to the back of the line
         # else: # event is type == ‘D’ someone is leaving an ATM machine
         elif currentEvent[3] == 'D':
