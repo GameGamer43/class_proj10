@@ -8,7 +8,6 @@ from eventList import EventList
 debug = True
 
 ev = EventList()
-e = Event
 
 def readFile(filename):
     contents = ''
@@ -20,50 +19,41 @@ def readFile(filename):
                 contents.replace("\n"," ")
                 contents = contents.strip()
                 contents = contents.split(" ")
-                contents = Event.Event(contents[0],contents[1],'A',0)
+                contents = Event.Event(contents[0],contents[1],'A','0')
                 ev.insert(contents)
                 contents = openFile.readline()
         return True
     except:
-        print('File could not be read. Please try again.')
+        print("Unexpected error:", sys.exc_info()[0])
+        print('File could not be read, Please try again.')
         exit()
-
+        
 def main():
-    
     # read in our file
     readFile('arrivals2.txt')
-    
-    # put the events into the event list
-    if debug == True:
-        print(ev.eventList)
-    
+
     # then sort the list
     ev.eventList.sort(key=lambda x: int(x[0]), reverse=True)
-    
+
     if debug == True:
         print(ev.eventList)
-    
+
     waitingList = []
 
-    # while event list is not empty    
+    # while event list is not empty
     while ev.eventList:
         # pop the next event off the event list
         currentEvent = ev.eventList.pop()
-        
+
         if debug == True:
             print('Event:',currentEvent,'Time:',currentEvent[0],'Duration:',
                     currentEvent[1])
 
-        # add to our event
-        e.eventTime = currentEvent[0] 
-        e.serviceTime = currentEvent[1]
-        e.eventType = 'A' 
- 
         # wallClockTime = the time of the event
-        wallClockTime = e.eventTime
+        wallClockTime = currentEvent[0]
 
         #person arrives at the line
-        if e.eventType == 'A':
+        if currentEvent[2] == 'A':
             print('Here')
             if not waitingList:
                 print('2')
@@ -75,7 +65,7 @@ def main():
             # else: # put the person in line because there is nowhere else to go
                 # add the person to the back of the line
         # else: # event is type == ‘D’ someone is leaving an ATM machine
-        elif e.eventType == 'D':
+        elif currentEvent[3] == 'D':
             if not waitingList:
                 print('4')
             # if the line is empty:

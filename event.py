@@ -2,16 +2,13 @@
 
 class Event:
     
-    def init(self, eTime = '', sTime = '', eType = '', atm = ''):
-        '''
-        constructor
-        '''
-        self.eventTime = []
-        self.serviceTime = []
-        self.eventType = []
-        self.ATMnumber = [1,2,3,4]
+    def __init__(self):
+        # worthless
         pass
 
+    def Event(eTime = '', sTime = '', eType = '', atm = ''):
+        return [eTime,sTime,eType,atm]
+    
     def __cmp__(self,other):
         '''
         overload compare operator so that position 1 matches in all lists
