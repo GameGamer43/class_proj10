@@ -39,7 +39,7 @@ def main():
         print(ev.eventList)
 
     waitingList = []
-
+    atmList = [1,2,3,4]
     # while event list is not empty
     while ev.eventList:
         # pop the next event off the event list
@@ -54,23 +54,29 @@ def main():
 
         #person arrives at the line
         if currentEvent[2] == 'A':
-            print('Here')
             # if the line is empty and an ATM is available:
-            if not waitingList:
-                print('2')
-                # send the person to an available ATM machine which means: create a new ‘D’event with an event time calculated from the wallClockTime plus the person’s service time
-                # add this new ‘D’ event to the event list
+            if not waitingList and atmList:
+                # send the person to an available ATM machine which means:
+                #create a new ‘D’event with an event time calculated from the   
+                #wallClockTime plus the person’s service time 
+                currentATM = atmList.pop()
+               
+                # add this new 'D' event to the event list 
+                ev.insert([int(currentEvent[0]) + int(currentEvent[1]), '0','D',currentATM])
             # else: # put the person in line because there is nowhere else
             else:
-                print('3')
                 # add the person to the back of the line
+                ev.insert(currentEvent)
         # else: # event is type == ‘D’ someone is leaving an ATM machine
-        elif currentEvent[3] == 'D':
+        elif currentEvent[2] == 'D':
+            pass
+            #if the line is empty:
             if not waitingList:
-                print('4')
-            # if the line is empty:
+                pass
                 # register the ATM machine as empty and available
             # else: # there are people in line and this ATM just became available
+            else:
+                pass
                 # get the ATM number from the ‘D’ event information
                 # pop the person (event) from the line
                 # send the person to the available ATM machine which means: create a new ‘D’ event with an
