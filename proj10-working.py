@@ -19,9 +19,11 @@ def readFile(filename):
             while contents != '':
                 contents.replace("\n"," ")
                 contents = contents.strip()
-                ev.insert(contents.split(" "))
+                contents = contents.split(" ")
+                contents = Event.Event(contents[0],contents[1],'A',0)
+                ev.insert(contents)
                 contents = openFile.readline()
-        return fileList
+        return True
     except:
         print('File could not be read. Please try again.')
         exit()
@@ -99,4 +101,4 @@ Event, this will be a list of events in line for ATMs. For each event in line, o
     pass
 
 if __name__ == '__main__':
-    main();
+    main()
