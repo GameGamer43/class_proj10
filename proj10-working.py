@@ -47,9 +47,12 @@ def main():
         currentEvent = ev.eventList.pop()
         
         if debug == True:
-            print(currentEvent)
-        
+            print('Event:',currentEvent,'Time:',currentEvent[0],'Duration:',
+                    currentEvent[1])
+
         # wallClockTime = the time of the event
+        wallClockTime = currentEvent[0]
+
         # if event type == ‘A’: # person arrives at the line
             # if the line is empty and an ATM is available:
                 # send the person to an available ATM machine which means: create a new ‘D’event with an event time calculated from the wallClockTime plus the person’s service time
