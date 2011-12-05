@@ -39,9 +39,10 @@ def main():
     
     # while event list is not empty
     while ev.eventList:
+
         # pop the next event off the event list
         currentEvent = ev.eventList.pop()
-
+        
         if debug == True:
             print('Event:',currentEvent,'Time:',currentEvent[0],'Duration:',
                     currentEvent[1])
@@ -68,20 +69,23 @@ def main():
         elif currentEvent[2] == 'D':
             #if the line is empty:
             if not waitingList:
-                pass
                 # register the ATM machine as empty and available
+                atmList.append(currentEvent[3])
             # else: # there are people in line and this ATM just became available
             else:
-                pass
                 # get the ATM number from the ‘D’ event information
                 # pop the person (event) from the line
                 # send the person to the available ATM machine which means: create a new ‘D’ event with an
+                newEvent = ev.eventList.pop()
+
                 # event time calculated from the wallClockTime plus the person’s service time
                 # add this new ‘D’ event to the event listi
+                ev.insert([int(currentEvent[0]) + int(newEvent[1]), '0','D',currentEvent[3]])
         ev.sort()
         # print the event, the line and ATM’s in use
+        output(currentEvent[2], ev.eventList, currentEvent[3],currentEvent[1])
 
-def output():
+def output(event = '', line = '', atm = '', serviceTime = ''):
     '''
     After each event:
         • Output the event that happened. For each event output the eventTime, the serviceTime, and the event Type.
@@ -91,7 +95,9 @@ Event, this will be a list of events in line for ATMs. For each event in line, o
     At the end of the program run:
         • Output the average time spent by people in each line.
     '''
-    pass
+    print("Event: ", event)
+    print("ATM Number: ", atm)
+    print("serviceTime: ", serviceTime)
 
 if __name__ == '__main__':
     main()
