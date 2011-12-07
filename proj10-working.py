@@ -8,6 +8,7 @@ from eventList import EventList
 debug = True
 
 ev = EventList()
+e = Event()
 
 def readFile(filename):
     contents = ''
@@ -19,7 +20,7 @@ def readFile(filename):
                 contents.replace("\n"," ")
                 contents = contents.strip()
                 contents = contents.split(" ")
-                contents = Event.Event(contents[0],contents[1],'A','0')
+                contents = e.insert(contents[0],contents[1],'A','0')
                 ev.insert(contents)
                 contents = openFile.readline()
         return True
@@ -36,13 +37,15 @@ def main():
     
     waitingList = []
     atmList = [1,2,3,4]
+    print(ev.eventList)
     
     # while event list is not empty
     while ev.eventList:
 
         # pop the next event off the event list
         currentEvent = ev.eventList.pop()
-        
+        currentEvent2 = currentEvent
+
         if debug == True:
             print('Event:',currentEvent,'Time:',currentEvent[0],'Duration:',
                     currentEvent[1])
@@ -63,6 +66,8 @@ def main():
                 ev.insert([int(currentEvent[0]) + int(currentEvent[1]), '0','D',currentATM])
             # else: # put the person in line because there is nowhere else
             else:
+                # increase our event time by own as the atm wasn't available
+                currentEvent[0] = int(currentEvent[0]) + 1
                 # add the person to the back of the line
                 ev.insert(currentEvent)
         # else: # event is type == ‘D’ someone is leaving an ATM machine
@@ -83,6 +88,8 @@ def main():
                 ev.insert([int(currentEvent[0]) + int(newEvent[1]), '0','D',currentEvent[3]])
         ev.sort()
         # print the event, the line and ATM’s in use
+        if debug == True:
+            print("EventList:",len(ev.eventList))
         output(currentEvent[2], ev.eventList, currentEvent[3],currentEvent[1])
 
 def output(event = '', line = '', atm = '', serviceTime = ''):
