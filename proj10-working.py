@@ -44,7 +44,6 @@ def main():
 
         # pop the next event off the event list
         currentEvent = ev.eventList.pop()
-        currentEvent2 = currentEvent
 
         if debug == True:
             print('Event:',currentEvent,'Time:',currentEvent[0],'Duration:',
